@@ -10,8 +10,8 @@ def solution(p: float, x: np.array) -> tuple:
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    alpha = 1 - p
     n = len(x)
     sd1 = np.std(x)
-    return sd1 * math.sqrt(n-1) / math.sqrt(st.chi2.ppf(1-alpha/2,n-1)), sd1 * math.sqrt(n-1) / math.sqrt(st.chi2.ppf(alpha / 2, n-1))
+    t = st.t.ppf(p,n-1)
+    return sd1 * math.sqrt(2*n) / (math.sqrt(2*n-3) + t), sd1 * math.sqrt(2*n) / (math.sqrt(2*n-3) - t)
     
